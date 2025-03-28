@@ -16,7 +16,8 @@ class QuestionListActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Set up RecyclerView with a linear layout and adapter
-        binding.questionRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.questionRecyclerView?.layoutManager = LinearLayoutManager(this)
+
         val questions = getQuestions()
         val adapter = QuestionAdapter(questions) { position ->
             // When an item is clicked, launch the detail activity.
@@ -24,7 +25,7 @@ class QuestionListActivity : AppCompatActivity() {
             intent.putExtra("QUESTION_INDEX", position)
             startActivity(intent)
         }
-        binding.questionRecyclerView.adapter = adapter
+        binding.questionRecyclerView?.adapter = adapter
     }
 
     private fun getQuestions(): List<Question> {
