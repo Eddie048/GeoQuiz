@@ -39,6 +39,15 @@ class CheatActivity : AppCompatActivity() {
         }
 
         updateResult()
+
+        // Ensure cheated answer is still shown after activity restart
+        if (cheatViewModel.isCheater) {
+            val answerText = when {
+                answerIsTrue -> R.string.true_button
+                else -> R.string.false_button
+            }
+            binding.answerTextView.setText(answerText)
+        }
     }
 
     private fun updateResult() {
