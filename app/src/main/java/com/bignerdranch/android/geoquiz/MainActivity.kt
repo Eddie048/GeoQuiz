@@ -78,11 +78,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+
         super.onDestroy()
         Log.d(TAG, "onDestroy() called")
     }
 
     private fun updateQuestion() {
+        quizViewModel.isCheater = false
         val questionTextResId = quizViewModel.currentQuestionText
         binding.questionTextView.setText(questionTextResId)
     }
