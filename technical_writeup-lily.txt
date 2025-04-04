@@ -1,0 +1,16 @@
+Technical writeup: 
+
+Project Setup: 
+	I used the GitHub (https://github.com/android/architecture-samples/wiki/To-do-app-specification) and used the command "git clone" to download the repository. Then I built the project and ran the application. This project had no issues with dependencies or builds.  
+
+App Overview: 
+	This application implements a "to-do" list.  
+	The application has two main screens; A statistics screen and a to-do screen. The statistics screen only displays the percentage of active vs completed tasks. The percentage of the completed task is based on the completed tasks which have not yet been cleared from memory. The application allows us to add tasks with a name and a description. we can then accept and view it from the view screen. The view screen allows us to sort by both active and complete activities. There is a three-dot option on the top of this screen which hosts two actions: a refresh and a clear completed action. The clear completed action allows for us to remove all completed items from the app and memory. The other option from 
+
+Key Feature 1: 
+	The next key feature is the filter tool. This allows us to display only parts of a list, another feature that is not present in the criminalIntent application. The criminal intent application allows us see multiple different screens all within one larger page. This is unique in displaying data to what we have seen previously, where all tasks were displayed without the ability to customize the view further than open or closed.  
+	The filter has allowed us to display either all tasks, active tasks or completed tasks via the viewModel.setFiltering(). When we select the view completed/active tasks we are changing the setFiltering which causes  
+    The tasks themselves have a status which is either completed task or active. This allows for the filtering to match the tasks via their status to the filter. 
+
+Key Feature 2: 
+    The next key feature is the toasts, specifically called snackbar messages because they contain only one line. These are short pop up messages that interact with a user, showing them what they just did. In the context of this application, we see a toast appear both on completion of a task as well as when you uncheck a completed task, once again marking is as active. Additionally, these toast messages appear when we save, add and delete tasks. A simple function called showSnackbarMessage was created which takes a usermessage Object, and sets it equal to the message passed in. These usermessage objects, are part of the larger UIState which is updated on each change. These changes are applied via conflate which discards intermediate states, displaying only the most recent.  
