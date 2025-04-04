@@ -28,6 +28,7 @@ class CheatActivity : AppCompatActivity() {
         binding = ActivityCheatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         answerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false)
         cheatIsTrue = cheatViewModel.isCheater
 
