@@ -16,6 +16,8 @@ class CheatActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCheatBinding
 
+    private val cheatViewModel: CheatViewModel by viewModels()
+
     private var answerIsTrue = false
     private var cheatIsTrue = false
 
@@ -39,16 +41,28 @@ class CheatActivity : AppCompatActivity() {
                 else -> R.string.false_button
             }
             binding.answerTextView.setText(answerText)
-            setAnswerShownResult(true)
+            cheatViewModel.isCheater = true
+
+            updateResult()
+        }
+
+        updateResult()
+
+        // Ensure cheated answer is still shown after activity restart
+        if (cheatViewModel.isCheater) {
+            val answerText = when {
+                answerIsTrue -> R.string.true_button
+                else -> R.string.false_button
+            }
+            binding.answerTextView.setText(answerText)
         }
     }
 
-    private fun setAnswerShownResult(isAnswerShown: Boolean) {
+    private fun updateResult() {
         val data = Intent().apply {
-            putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown)
+            putExtra(EXTRA_ANSWER_SHOWN, cheatViewModel.isCheater)
         }
-        cheatViewModel.isCheater = isAnswerShown
-        setResult(Activity.RESULT_OK, data)
+        setResult(RESULT_OK, data)
     }
 
     companion object {
